@@ -1,0 +1,245 @@
+<!DOCTYPE html class="Default">
+<html lang="en">
+  <head>
+    <title>Map</title>
+
+    <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/string-similarity.min.js')}}"></script>
+
+    <script>
+      // Records whether the map data is from a data store or not
+      var from_store = {{ from_store|tojson }};
+      // Arrays containing the OSM data to render, whether the data had been stored or not
+      var nodes = {{ node_array|tojson }};
+      var ways = {{ way_array|tojson }};
+      var rels = {{ rel_array|tojson }};
+      // Holds the ways, but in a fashion that will make them quicker to draw
+      var quick_ways = {{ quick_ways|tojson }};
+      // Holds the nodes that have names (i.e. the only nodes worth drawing)
+      var named_nodes = {{ named_nodes|tojson }};
+      // Holds the available colour schemes and the links to their associated JSON files
+      var colour_schemes = {
+        "Default" : "{{ url_for('static', filename='json/default.json') }}",
+        "Dark Mode" : "{{ url_for('static', filename='json/dark.json') }}",
+        "Coffee Cream" : "{{ url_for('static', filename='json/cream.json') }}",
+        "Red-Blind Default" : "{{ url_for('static', filename='json/protanomaly.json') }}",
+        "Red-Blind Dark" : "{{ url_for('static', filename='json/protanomaly.json') }}",
+        "Green-Blind Default" : "{{ url_for('static', filename='json/deuteranomaly.json') }}",
+        "Green-Blind Dark" : "{{ url_for('static', filename='json/deuteranomaly.json') }}",
+        "Blue-Blind Default" : "{{ url_for('static', filename='json/tritanomaly.json') }}",
+        "Blue-Blind Dark" : "{{ url_for('static', filename='json/tritanomaly.json') }}",
+        "Greyscale" : "{{ url_for('static', filename='json/greyscale.json') }}"
+      };
+    </script>
+
+    <script src="{{url_for('static', filename='js/database_functions.js')}}"></script>
+    <script src="{{url_for('static', filename='js/map.js')}}"></script>
+
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/map.css') }}">
+  </head>
+  <body>
+
+    {% include 'header.html' %}
+
+    <div class="row">
+      <div id="left_mid">
+        <div class="column" id="left">
+
+          <div class="pop-up" id="search_window">
+            <h2>Search</h2>
+
+            <p>
+              Here, you can search for and highlight interesting nodes on the map. You can use the arrow buttons to cycle through each result.
+            </p>
+
+            <label for="query_name">Name:</label>
+            <input type="text" id="query_name" name="query_name"/>
+            <br>
+
+            <p id="similarity_label">Name similarity:</p>
+            <div>
+              <p style="float:left">Vague</p>
+              <p style="float:right">Exact</p>
+            </div>
+
+            <input type="range" id="name_similarity" name="name_similarity"
+                min="0.05" max="1" step="0.05" list="how_similar"/>
+
+            <datalist id="how_similar">
+              <option value="0.05" label="Vague"></option>
+              <option value="0.25"></option>
+              <option value="0.5" label="Similar"></option>
+              <option value="0.75"></option>
+              <option value="1" label="Exact"></option>
+            </datalist>
+
+            <div id="select_form">
+              <label for="tag_search">Has tag:</label>
+              <select id="tag_search" name="tag_search">
+                <option id="unspecified_tag" value="n/a">----------------</option>
+              </select>
+            </div>
+
+            <div id="select_form">
+              <label for="amenity_search">Amenity type:</label>
+              <select id="amenity_search" name="amenity_search">
+                <option id="unspecified_amenity" value="n/a">----------------</option>
+              </select>
+            </div>
+
+            <button onclick="queryNodes()">Search</button>
+            <br><br>
+            <button onclick="resetCriteria()">Clear Search Criteria</button>
+            <br><br>
+
+            <hr id="divider">
+
+            <h4 id="result_string">0 results found.</h4>
+            <p id="result_increment">Showing result 0 of 0.</p>
+            <div id="arrow_buttons">
+              <button id="left_arrow" title="The arrow keys on your keyboard work too" onclick="showPreviousResult()" disabled = true>&#8592;</button>
+              <button id="right_arrow" title="The arrow keys on your keyboard work too" onclick="showNextResult()" disabled = true>&#8594;</button>
+            </div>
+            <br>
+            <button onclick="clearResults()">Clear Results</button>
+            <br><br>
+            <button onclick="hideSearchWindow()">Close</button>
+          </div>
+
+          <div id="pan_buttons">
+            <button id="up_pan" title="Pan the map upwards. Shortcut: &#8593" onclick="moveUp()">
+              <img class="button_icon" src="{{ url_for('static', filename='icons/Pan Up Icon.png') }}" title="Pan the map upwards. Shortcut: &#8593" />
+            </button>
+            <div id="left_right_pan">
+              <button id="left_pan" title="Pan the map to the left. Shortcut: &#8592" onclick="moveLeft()">
+                <img class="button_icon" src="{{ url_for('static', filename='icons/Pan Left Icon.png') }}" title="Pan the map to the left. Shortcut: &#8592" />
+              </button>
+              <button id="right_pan" title="Pan the map to the right. Shortcut: &#8594" onclick="moveRight()">
+                <img class="button_icon" src="{{ url_for('static', filename='icons/Pan Right Icon.png') }}" title="Pan the map to the right. Shortcut: &#8594" />
+              </button>
+            </div>
+            <button id="down_pan" title="Pan the map downwards. Shortcut: &#8595" onclick="moveDown()">
+              <img class="button_icon" src="{{ url_for('static', filename='icons/Pan Down Icon.png') }}" title="Pan the map downwards. Shortcut: &#8595" />
+            </button>
+          </div>
+
+          <div id="zoom_buttons">
+            <button id="zoom_in" title="Zoom the map in. Shortcut: +" onclick="zoomIn()">
+              <img class="button_icon" src="{{ url_for('static', filename='icons/Zoom In Icon.png') }}" title="Zoom the map in. Shortcut: +" />
+            </button>
+            <button title="Zoom the map out. Shortcut: -" onclick="zoomOut()">
+              <img class="button_icon" src="{{ url_for('static', filename='icons/Zoom Out Icon.png') }}" title="Zoom the map out. Shortcut: -" />
+            </button>
+          </div>
+
+          <div id="reset_buttons">
+            <button id="reset_position" title="Shortcut: CTRL+Z" onclick="resetPosition()">Reset Position</button>
+            <button title="Shortcut: CTRL+Z" onclick="resetScale()">Reset Zoom</button>
+          </div>
+        </div>
+
+        <div class="column" id="mid">
+          <h1>Map</h1>
+
+          <canvas id="map" name="map" width=600 height=500 title="Click-and-drag or scroll with your mouse-wheel to interact with the map. Click on nodes to see information about them."></canvas>
+          <br><br>
+          <label for="map">© <a href="https://wiki.openstreetmap.org/wiki/Main_Page">OpenStreetMap</a> contributors</label>
+          
+        </div>
+      </div>
+
+      <div class="column" id="right">
+        <div class="pop-up" id="node_info">
+          <h2 id="node_name"></h2>
+
+          <div id="table_container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tag Name</th>
+                  <th>Tag Value</th>
+                </tr>
+              </thead>
+
+              <tbody id="node_tags">
+              </tbody>
+            </table>
+          </div>
+
+          <button onclick="closeNodePopUp()">Close</button>
+        </div>
+
+        <div class="pop-up" id="map_key">
+          <h2>Key</h2>
+          <p>A "node" is a single point on the map. A "way" is a line on the map.</p>
+          <div id="key_container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Icon</th>
+                  <th>Map Element</th>
+                </tr>
+              </thead>
+
+              <tbody id="map_elements">
+              </tbody>
+            </table>
+          </div>
+
+          <button onclick="hideKey()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="button_row">
+      <div class="button_container">
+        <button id="search_button" title="Search for and highlight nodes of interest. Shortcut: CTRL+F" onclick="showSearchWindow()">
+          <img class="button_icon" src="{{ url_for('static', filename='icons/Search Icon.png') }}" title="Search for and highlight nodes of interest. Shortcut: CTRL+F" />
+          Search
+        </button>
+      </div>
+      <div class="button_container">
+        <button id="store_button" title="Save this map to your browser so you can access it online. Shortcut: CTRL+S" onclick="showStorageForm()">
+          <img class="button_icon" src="{{ url_for('static', filename='icons/Save Map Icon.png') }}" title="Save this map to your browser so you can access it online. Shortcut: CTRL+S" />
+          Save Map
+        </button>
+     </div>
+     <div class="button_container">
+        <button id="key_button" title="Open the map key. Shortcut: CTRL+K" onclick="showKey()">
+          Show Key
+        </button>
+      </div>
+    </div>
+
+    <div class="overlay">
+      <div id="data_storage_form">
+        <h1>Save Map</h1>
+
+        <p>
+          Please enter a name for this map. You can also add a short description to remind yourself about what the map shows, and choose whether you want to prioritise using less memory, or having faster loading times.
+        </p>
+
+        <label for="cache_name">Name:</label>
+        <input type="text" id="cache_name" name="cache_name"/>
+        <br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"/>
+        <br>
+
+        <label for="priority">Prioritise:</label>
+        <select id="priority" name="priority">
+          <option value="quick">Shorter loading time</option>
+          <option value="slow">Less memory usage</option>
+        </select>
+        <br>
+
+        <button onclick="storeIt()">Save</button>
+        <br><br>
+
+        <button onclick="hideStorageForm()">Close Form</button>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html class="Default">
+<html lang="en">
+  <head>
+    <title>Home</title>
+
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/index.css') }}">
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <div class="page_body">
+      <h1>Welcome!</h1>
+      <p>
+        Welcome to my Offline Map Application! Here, you can retrieve, save, and display maps from the OpenStreetMap database. The data used by this site is made available under an <a href="https://www.openstreetmap.org/copyright" target="_blank"> Open Data Commons Open Database License</a> and is supplied by volunteers, so there may not be a map for every location.
+      </p>
+      <div class="row">
+        <div class="column" id="old">
+          <button onclick="goToCache()" title="Load or manage maps stored on your browser.">
+            <h3>Load Saved Maps</h3>
+            <img class="button_icon" src="{{ url_for('static', filename='icons/Load Map Icon.png') }}" />
+            <p>If you have some maps saved, you can load them here.</p>
+            <h4>No internet connection required.</h4>
+          </button>
+        </div>
+        <div class="column" id="new">
+          <button onclick="goToGet()" title="Retrieve of new map of a city, or of the area surrounding a postal code/set of coordinates.">
+            <h3>Search For New Maps</h3>
+            <img class="button_icon" src="{{ url_for('static', filename='icons/Search Map Icon.png') }}" />
+            <p>If you would like to find a new map, you can search for one here.</p>
+            <h4 class="warning_text">Internet connection required.</h4>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

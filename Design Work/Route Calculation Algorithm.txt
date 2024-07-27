@@ -1,0 +1,31 @@
+Simple Route Calculation Algorithm
+----------------------------------
+
+I will probably not implement route calculation into the actual application, but I may make a
+proof of concept program to demonstrate the idea if I have time. I might also be nice to show
+off such an algorithm when talking about improvements that could be made to the application in
+the future.
+
+Changes to initial map load:
+
+	- When loading the ways, identify which nodes are used in more than one way. Add the ID/
+		coordinates of these nodes and the IDs of the ways that they connect to an array.
+
+Actual algorithm:
+
+	1. Get desired starting point. Get desired ending point.
+
+	2. Get the ID of the ways closed to the starting and ending points respectively.
+
+	3. Use that new array from map load to find a series of intersections that will 
+		connect the starting way to the ending way.
+
+	4. Draw a line from the starting point to each of the intersecting nodes 
+		(along their respective ways) to the ending point. (Could draw a way 
+		starting from the first intersecting node to the next intersecting node, 
+		identifying each node by its coordinates - as you will be using quick ways, 
+		not regular ways.)
+
+I assume that finding the correct series of intersections may require some fancy graphing 
+algorithms and other optimisations that work around the fact that JavaScript only supports
+single-threading.

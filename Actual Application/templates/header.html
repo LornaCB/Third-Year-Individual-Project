@@ -1,0 +1,23 @@
+<!DOCTYPE html class="Default">
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/global.css') }}">
+
+    <script src="{{url_for('static', filename='js/header.js')}}"></script>
+  </head>
+  <body>
+    <div class="header">
+      <button class="home_button" onclick="goHome()">
+        <img id="home_icon" src="{{ url_for('static', filename='icons/Home Icon.png') }}" />
+        Home
+      </button>
+      <div class="accessibility_drop_downs">
+        <label for="text_size_select">Text Size:</label>
+        <select class="accessibility_drop_down" id="text_size_select" name="text_size_select" onchange="changeTextSize()"></select>
+
+        <label for="colour_scheme_select">Colour Scheme:</label>
+        <select class="accessibility_drop_down" id="colour_scheme_select" name="colour_scheme_select" onchange="changeColourScheme()"></select>
+      </div>
+    </div>
+  </body>
+</html>

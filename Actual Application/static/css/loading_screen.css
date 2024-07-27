@@ -1,0 +1,31 @@
+.loader {
+ border: 16px solid var(--trim_border_colour);
+ border-top: 16px solid var(--trim_background_colour);
+ border-radius: 50%;
+ width: 60px;
+ height: 60px;
+ margin-left: calc(50% - (45px));
+ animation: spin 2s linear infinite;
+ margin-bottom: 10px;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+#loading_screen {
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: var(--background_contrast_colour);
+  border: 2px solid var(--main_border_colour);
+}
+
+#loading_text {
+  margin-top: 0px;
+  color: var(--trim_text_colour);
+  background-color: var(--trim_background_colour);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

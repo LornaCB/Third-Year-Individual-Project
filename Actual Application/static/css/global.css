@@ -1,0 +1,386 @@
+/*
+    Colour Schemes and Text Sizes
+*/
+
+/* Use https://codepen.io/sosuke/pen/Pjoqqp to get the filters needed to produce a specific colour. */
+
+:root,
+    /* --- Colour Schemes --- */
+    /* The default colour scheme */
+    :root.default {
+        /* For the majority of the page */
+        --main_background_colour : White;
+        --main_text_colour : Black;
+        --main_border_colour : Black;
+        --main_icon_filter: invert(0%); /* Filters black to black */
+        /* For headers and other similar elements */
+        --trim_background_colour : DarkBlue;
+        --trim_text_colour : White;
+        --trim_border_colour : White;
+        --trim_icon_filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(121deg) brightness(108%) contrast(101%); /* Filters black to white */
+        /* Other */
+        --background_contrast_colour: LightSlateGrey;
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : DarkBlue;
+    }
+    /* Dark Mode colour scheme */
+    :root.dark {
+        /* For the majority of the page */
+        --main_background_colour : Black;
+        --main_text_colour : rgb(209,209,209); 
+        --main_border_colour : rgb(209,209,209);
+        --main_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* For headers and other similar elements */
+        --trim_background_colour : rgb(66,28,66);
+        --trim_text_colour : rgb(209,209,209); 
+        --trim_border_colour : rgb(209,209,209);
+        --trim_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* Other */
+        --background_contrast_colour: rgb(68, 73, 78);
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : rgb(154, 57, 154);
+    }
+    /* Cream colour scheme */
+    :root.cream {
+        /* For the majority of the page */
+        --main_background_colour : rgb(255,245,203);
+        --main_text_colour : rgb(52,24,10);
+        --main_border_colour : rgb(52,24,10);
+        --main_icon_filter: invert(10%) sepia(25%) saturate(1540%) hue-rotate(337deg) brightness(101%) contrast(98%); /* Filters black to brown */
+        /* For headers and other similar elements */
+        --trim_background_colour : rgb(52,24,10);
+        --trim_text_colour : rgb(255,245,203);
+        --trim_border_colour : rgb(255,245,203);
+        --trim_icon_filter: invert(88%) sepia(17%) saturate(406%) hue-rotate(357deg) brightness(106%) contrast(101%); /* Filters black to cream */
+        /* Other */
+        --background_contrast_colour: rgb(153,137,119);
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : rgb(74,38,20);
+    }
+    /* Protanomaly-Default colour scheme */
+    :root.protanomaly {
+        /* For the majority of the page */
+        --main_background_colour : White;
+        --main_text_colour : Black;
+        --main_border_colour : Black;
+        --main_icon_filter: invert(0%); /* Filters black to black */
+        /* For headers and other similar elements */
+        --trim_background_colour : DarkBlue;
+        --trim_text_colour : White;
+        --trim_border_colour : White;
+        --trim_icon_filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(121deg) brightness(108%) contrast(101%); /* Filters black to white */
+        /* Other */
+        --background_contrast_colour: LightSlateGrey;
+        --input_border_colour : #CCC;
+        --warning_colour : rgb(162,0,255);
+        --hyperlink_colour : DarkBlue;
+    }
+    /* Protanomaly-Dark colour scheme */
+    :root.protanomaly-dark {
+        /* For the majority of the page */
+        --main_background_colour : Black;
+        --main_text_colour : rgb(209,209,209); 
+        --main_border_colour : rgb(209,209,209);
+        --main_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* For headers and other similar elements */
+        --trim_background_colour : rgb(66,28,66);
+        --trim_text_colour : rgb(209,209,209); 
+        --trim_border_colour : rgb(209,209,209);
+        --trim_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* Other */
+        --background_contrast_colour: rgb(68, 73, 78);
+        --input_border_colour : #CCC;
+        --warning_colour : rgb(162,0,255);
+        --hyperlink_colour : rgb(154, 57, 154);
+    }
+    /* Deuteranomaly-Default colour scheme */
+    :root.deuteranomaly {
+        /* For the majority of the page */
+        --main_background_colour : White;
+        --main_text_colour : Black;
+        --main_border_colour : Black;
+        --main_icon_filter: invert(0%); /* Filters black to black */
+        /* For headers and other similar elements */
+        --trim_background_colour : DarkBlue;
+        --trim_text_colour : White;
+        --trim_border_colour : White;
+        --trim_icon_filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(121deg) brightness(108%) contrast(101%); /* Filters black to white */
+        /* Other */
+        --background_contrast_colour: LightSlateGrey;
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : DarkBlue;
+    }
+    /* Deuteranomaly-Dark colour scheme */
+    :root.deuteranomaly-dark {
+        /* For the majority of the page */
+        --main_background_colour : Black;
+        --main_text_colour : rgb(209,209,209); 
+        --main_border_colour : rgb(209,209,209);
+        --main_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* For headers and other similar elements */
+        --trim_background_colour : rgb(66,28,66);
+        --trim_text_colour : rgb(209,209,209); 
+        --trim_border_colour : rgb(209,209,209);
+        --trim_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* Other */
+        --background_contrast_colour: rgb(68, 73, 78);
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : rgb(28, 118, 178);
+    }
+    /* Tritanomaly-Default colour scheme */
+    :root.tritanomaly {
+        /* For the majority of the page */
+        --main_background_colour : White;
+        --main_text_colour : Black;
+        --main_border_colour : Black;
+        --main_icon_filter: invert(0%); /* Filters black to black */
+        /* For headers and other similar elements */
+        --trim_background_colour : DarkGreen;
+        --trim_text_colour : White;
+        --trim_border_colour : White;
+        --trim_icon_filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(121deg) brightness(108%) contrast(101%); /* Filters black to white */
+        /* Other */
+        --background_contrast_colour: LightSlateGrey;
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : DarkGreen;
+    }
+    /* Tritanomaly-Dark colour scheme */
+    :root.tritanomaly-dark {
+        /* For the majority of the page */
+        --main_background_colour : Black;
+        --main_text_colour : rgb(209,209,209); 
+        --main_border_colour : rgb(209,209,209);
+        --main_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* For headers and other similar elements */
+        --trim_background_colour : rgb(75, 31, 0);
+        --trim_text_colour : rgb(209,209,209); 
+        --trim_border_colour : rgb(209,209,209);
+        --trim_icon_filter: invert(92%) sepia(0%) saturate(862%) hue-rotate(210deg) brightness(101%) contrast(76%); /* Filters black to light grey */
+        /* Other */
+        --background_contrast_colour: rgb(68, 73, 78);
+        --input_border_colour : #CCC;
+        --warning_colour : Red;
+        --hyperlink_colour : rgb(24, 144, 0);
+    }
+    /* Greyscale colour scheme */
+    :root.greyscale {
+        /* For the majority of the page */
+        --main_background_colour : White;
+        --main_text_colour : Black;
+        --main_border_colour : Black;
+        --main_icon_filter: invert(0%); /* Filters black to black */
+        /* For headers and other similar elements */
+        --trim_background_colour : Black;
+        --trim_text_colour : White;
+        --trim_border_colour : White;
+        --trim_icon_filter: invert(100%) sepia(0%) saturate(7465%) hue-rotate(121deg) brightness(108%) contrast(101%); /* Filters black to white */
+        /* Other */
+        --background_contrast_colour: rgb(125, 125, 125);
+        --input_border_colour : #CCC;
+        --warning_colour : rgb(50, 50, 50);
+        --hyperlink_colour : rgb(65, 65, 65);
+    }
+    /* --- Text Sizes --- */
+    /* Default */
+    :root.default_size {
+        --paragraph_size : 16px;
+        --h1_size : 36px;
+        --h2_size : 28px;
+        --h3_size : 24.8px;
+        --h4_size : 20px;
+    }
+    /* 125% x Default */
+    :root.bigger_size {
+        --paragraph_size : 22.5px;
+        --h1_size : 45px;
+        --h2_size : 35px;
+        --h3_size : 31px;
+        --h4_size : 25px;
+    }
+    /* 150% x Default */
+    :root.larger_size {
+        --paragraph_size : 27px;
+        --h1_size : 54px;
+        --h2_size : 42px;
+        --h3_size : 37.2px;
+        --h4_size : 30px;
+    }
+    /* 175% x Default */
+    :root.greater_size {
+        --paragraph_size : 31.5px;
+        --h1_size : 63px;
+        --h2_size : 49px;
+        --h3_size : 43.4px;
+        --h4_size : 35px;
+    }
+    /* 200% x Default */
+    :root.largest_size {
+        --paragraph_size : 36px;
+        --h1_size : 72px;
+        --h2_size : 56px;
+        --h3_size : 48px;
+        --h4_size : 40px;
+    }
+
+/*
+    For every webpage
+*/
+
+html, button, select, label, input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+p, button, select, label, input, table {
+    font-size: var(--paragraph_size);
+    line-height: calc(1.5 * var(--paragraph_size));
+    word-spacing: calc(0.16 * var(--paragraph_size));
+    letter-spacing: calc(0.12 * var(--paragraph_size));
+}
+
+h1 {
+    font-size: var(--h1_size);
+    line-height: calc(1.5 * var(--h1_size));
+    word-spacing: calc(0.16 * var(--h1_size));
+    letter-spacing: calc(0.12 * var(--h1_size));
+}
+
+h2 {
+    font-size: var(--h2_size);
+    line-height: calc(1.5 * var(--h2_size));
+    word-spacing: calc(0.16 * var(--h2_size));
+    letter-spacing: calc(0.12 * var(--h2_size));
+}
+
+h3 {
+    font-size: var(--h3_size);
+    line-height: calc(1.5 * var(--h3_size));
+    word-spacing: calc(0.16 * var(--h3_size));
+    letter-spacing: calc(0.12 * var(--h3_size));
+}
+
+h4 {
+    font-size: var(--h4_size);
+    line-height: calc(1.5 * var(--h4_size));
+    word-spacing: calc(0.16 * var(--h4_size));
+    letter-spacing: calc(0.12 * var(--h4_size));
+}
+
+button, select, input {
+    background-color: var(--main_background_colour);
+    color: var(--main_text_colour);
+    border: 1px solid var(--main_border_colour);
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+label {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+input[type=text] {
+    cursor: text;
+}
+
+button:disabled {
+    background-color: rgba(120,120,120,0.3);
+    color: rgba(120,120,120,0.3);
+    border: 1px solid rgba(120,120,120,0.3);
+}
+
+a {
+    color: var(--hyperlink_colour);
+    font-weight: bold
+}
+
+body {
+    background-color: var(--main_background_colour);
+    color: var(--main_text_colour);
+    margin: 0;
+}
+
+.page_body {
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.warning_text {
+    color: var(--warning_colour);
+    font-weight: Bold;
+}
+
+.button_icon {
+    filter: var(--main_icon_filter);
+}
+
+/*
+    For header.html (which is on every webpage)
+*/
+
+.header {
+    background-color: var(--trim_background_colour);
+    width: 100%;
+    height: fit-content;
+    position: relative;
+}
+
+.home_button {
+    background-color: var(--trim_background_colour);
+    color: var(--trim_text_colour);
+    margin-bottom: 15px;
+    margin-left: 20px;
+    border: 0px;
+    font-size: var(--h1_size);
+    font-weight: bold;
+    cursor: pointer;
+    height: var(--h1_size);
+    margin-top: 0.5%;
+}
+
+.accessibility_drop_downs {
+    font-size: var(--h1_size);
+    font-weight: bold;
+    float: right;
+    margin-right: 20px;
+    color: var(--trim_text_colour);
+}
+
+.accessibility_drop_down {
+    width: auto;
+    display: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: var(--trim_background_colour);
+    color: var(--trim_text_colour);
+    border: 1px solid var(--trim_border_colour);
+    font-weight: bold;
+}
+
+#home_icon {
+    height: 100%;
+    filter: var(--trim_icon_filter);
+}

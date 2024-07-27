@@ -1,0 +1,43 @@
+Map App IndexedDB Structure
+---------------------------
+
+	Logic
+	-----
+
+Each piece of OSM data is its own JSON object.
+Each piece of OSM data must be placed into a separate array based on its type.
+Each chunk of OSM data (from a single query) can be saved into the database.
+The cached chunk should be retrievable by name (or some other index).
+There should be room for more than one cached chunk.
+
+"Quick Ways" is used to render ways more quickly. The user can choose whether to
+store this in the database to shorten the initial map loading time, or to leave
+this empty to use less memory.
+
+	Structure
+	---------
+
+IndexedDB = {
+	"Cached Data" : [
+		{
+			"Name" : NAME OF DATA STORE,
+			"Description" : DESCRIPTION OF DATA STORE,
+			"Data" :  {
+					"Nodes" : [
+						OSM JSON DATA GOES HERE
+					],
+					"Ways" : [
+						OSM JSON DATA GOES HERE
+					],
+					"Rels" : [
+						OSM JSON DATA GOES HERE
+					],
+					"Quick Ways" : [
+						[WAY ID, [WAY COORDINATES]]
+					]
+			}
+		}
+	]
+}
+
+"Cached Data" is an IndexedDB object store. Its keyPath is "Name".

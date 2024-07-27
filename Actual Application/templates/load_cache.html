@@ -1,0 +1,44 @@
+<!DOCTYPE html class="Default">
+<html lang="en">
+  <head>
+    <title>Load Map</title>
+
+    <script>
+      var load_icon_source = "{{ url_for('static', filename='icons/Load Icon.png') }}";
+      var delete_icon_source = "{{ url_for('static', filename='icons/Delete Icon.png') }}";
+    </script>
+
+    <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/requests.js')}}"></script>
+    <script src="{{url_for('static', filename='js/database_functions.js')}}"></script>
+    <script src="{{url_for('static', filename='js/load_cache.js')}}"></script>
+
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/load_cache.css') }}">
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <div class="page_body">
+      <h1>Load Saved Maps</h1>
+      <img class="button_icon" id="pizzaz" src="{{ url_for('static', filename='icons/Map Icon.png') }}" />
+      <p>Here, you can load and delete maps that you have saved. You can access these both offline and online.</p>
+
+      <table>
+        <thead>
+          <th id="name_column">Name</th>
+          <th id="description_column">Description</th>
+          <th>Load Map</th>
+          <th>Delete Map</th>
+        </thead>
+        <tbody id="store_table">
+        </tbody>
+      </table>
+
+      <button onclick="wipeData()">
+        <img class="button_icon" src="{{ url_for('static', filename='icons/Delete Icon.png') }}" />
+        Delete All Saved Maps
+      </button>
+
+      {% include 'loading_screen.html' %}
+    </div>
+  </body>
+</html>

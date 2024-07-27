@@ -1,0 +1,57 @@
+/* Elements */
+
+hr {
+  border-left: 2px solid var(--main_border_colour);
+  height: 175%;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+}
+
+.page_body > .column > label {
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+input[type="text"], .column > select {
+  width: 70%;
+  float: right;
+}
+
+input[type=text] {
+  border: 1px solid var(--input_border_colour);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Classes */
+
+.page_body > .row > .column > p, .page_body > .row > .column > h4 {
+  text-align: left;
+}
+
+.row {
+ display: flex;
+}
+
+.column {
+ flex: 50%;
+ padding-left: 5%;
+ padding-right: 5%;
+ padding-bottom: 1%;
+ position: relative;
+}
+
+/* IDs */
+
+#city_search {
+  float: left;
+}
+
+#point_search {
+  float: right;
+}
+
+#warning {
+  color: var(--warning_colour);
+}

@@ -1,0 +1,62 @@
+Algorithms
+----------
+
+	Frontend
+	--------
+
+Rendering the Map
+-----------------
+
+Receive data from backend (in form of 3 arrays [nodes], [ways], [areas])
+Go through the list of nodes
+	LOOP START
+	Draw each node
+	LOOP END
+Go through the list of ways
+	LOOP START
+	Draw each way
+	LOOP END
+Go through the list of areas
+	LOOP START
+	Draw each area
+	LOOP END
+
+(Note : The data is passed through from the backend using Flask's render_template
+parameters, which replaces placeholders in the HTML file with actual data.)
+
+
+Caching Formatted OSM Data
+--------------------------
+
+Take user input for cache name + cache description
+Create JSONObject out of cache name, cache desc., OSM data
+Put JSONObject into "Cached Data" object store
+
+	Backend
+	-------
+
+Load Map Data (from IndexedDB data cache)
+-----------------------------------------
+
+Receive formatted OSM data from frontend
+Render map.html with provided OSM data
+
+Load Map Data (from OSM query)
+------------------------------
+
+Receive OSM query from frontend
+Send OSM query to Overpass API
+Receive OSM data from Overpass API
+Format OSM data into three arrays (nodes, ways, areas)
+Render map.html with this formatted OSM data
+
+Load Map Data (from form)
+-------------------------
+
+Receive form inputs from frontend
+Convert inputs into an OSM query
+Send that OSM query to Overpass API
+Receive OSM data from Overpass API
+Format OSM data into three arrays (nodes, ways, areas)
+Render map.html with this formatted OSM data
+

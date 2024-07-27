@@ -1,0 +1,37 @@
+.row {
+  display: flex;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.column {
+  flex: 50%;
+  border: 1px solid var(--main_border_colour);
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 2%;
+}
+
+.column > button {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border: 0px;
+}
+
+p {
+  text-align: left;
+}
+
+button > img {
+  height: 75%;
+}
+
+#old {
+  float: left;
+}
+
+#new {
+  float: right;
+}

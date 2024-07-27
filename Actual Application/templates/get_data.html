@@ -1,0 +1,70 @@
+<!DOCTYPE html class="Default">
+<html lang="en">
+  <head>
+    <title>Search For Map</title>
+
+    <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/requests.js')}}"></script>
+    <script src="{{url_for('static', filename='js/get_data.js')}}"></script>
+
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/get_data.css') }}">
+  </head>
+  <body>
+    <hr>
+    {% include 'header.html' %}
+    <div class="page_body">
+      <div class="row">
+
+        <div id="city_search" class="column">
+          <h1>Map Of City</h1>
+          <p>
+            In this section, you can retrieve a map of an entire city/town.
+            Please enter the name of the city/town you would like a map of.
+          </p>
+          <label for="country">City/Town Name:</label>
+          <input type="text" id="town" name="town"/>
+          <br><br>
+          <p>If there is more than one city/town with that name, please enter a county/state.</p>
+          <p class="warning_text">Do not enter a county/state if this is not the case.</p>
+          <label for="country">County/State:</label>
+          <input type="text" id="county" name="county"/>
+          <br><br>
+          <p class="warning_text">WARNING: Loading times will increase with the size of the map. Please have patience.</p>
+          <button class="search_button" onclick="processForm()">Search</button>
+          <br><br>
+          <button class="search_button" onclick="fuckingWifi()">Get Offline Test Data</button>
+        </div>
+
+        <div id="point_search" class="column">
+          <h1>Map Around Point</h1>
+          <p>
+            In this section, you can search for a specific location and get a map of the area around it. Please enter the postal code and country of the location you would like a map of. Postal codes must be written in the correct format, with all spaces and such included, but they are not case-sensitive.
+          </p>
+          <h4>
+            Postal code data is provided by the GeoNames database under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution Licence.</a>
+          </h4>
+          <label for="country">Country:</label>
+          <select name="country" id="country"></select>
+          <br><br>
+          <label for="postcode">Postal Code:</label>
+          <input type="text" id="postcode" name="postcode"/>
+          <br><br>
+          <button class="search_button" onclick="postcodeSearch()">Search By Postal Code</button>
+          <br>
+          <p>
+            Or, you can enter the coordinates of this point.
+          </p>
+          <label for="latitude">Latitude:</label>
+          <input type="text" id="latitude" name="latitude"/>
+          <br><br>
+          <label for="longitude">Longitude:</label>
+          <input type="text" id="longitude" name="longitude"/>
+          <br><br>
+          <button class="search_button" onclick="coordinatesSearch()">Search By Coordinates</button>
+        </div>
+
+      </div>
+      {% include 'loading_screen.html' %}
+    </div>
+  </body>
+</html>

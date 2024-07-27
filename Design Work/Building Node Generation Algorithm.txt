@@ -1,0 +1,29 @@
+Building Node Generation Algorithm
+----------------------------------
+
+The aim of this algorithm is to create a node from a way that
+represents a building so that it can be added to the named_nodes
+array and display information about that building when clicked.
+
+Criteria for a building way =
+	- Is a way
+	- Has tag "name"
+	- Has tag "building"
+
+When a building way is found during the process of converting the ways
+into quick ways:
+	1. Get the first, last, and middle nodes of that way's
+		coordinates.
+	2. Calculate the centre point of the triangle that is formed
+		when you connect the first, last, and middle nodes.
+	3. Create a node with no ID, using the centre point of that
+		triangle as its coordinates and the way's tags as 
+		its own tags.
+	4. Add the node into named_nodes along with the ID of the
+		"building node" colour group.
+
+These building nodes will then be treated like any other named node.
+(I.e. they will be rendered onto the map and the user will be able to
+interact with them via mouse-clicks to see information about them.)
+
+

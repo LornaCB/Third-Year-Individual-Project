@@ -1,0 +1,54 @@
+table {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+table, th, td {
+  border: 1px solid var(--main_border_colour);
+  text-align: center;
+}
+
+th, td {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.page_body {
+  padding-bottom: 2%;
+}
+
+.page_body > button {
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  width: fit-content;
+  font-size: calc(var(--paragraph_size) + 8px);
+  vertical-align: bottom;
+}
+
+.page_body > button > img {
+  height: calc(var(--paragraph_size) + 8px);
+}
+
+.table_button {
+  padding-top: 0.5%;
+  font-size: calc(var(--paragraph_size) + 8px);
+}
+
+.table_button > img {
+  height: calc(var(--paragraph_size) + 8px);
+}
+
+#name_column {
+  width: 25%;
+}
+
+#description_column {
+  width: 40%;
+}
+
+#pizzaz {
+  height: 20%;
+}

@@ -1,0 +1,331 @@
+/* All */
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+canvas {
+  border: 1px solid var(--main_border_colour);
+}
+
+label {
+  padding-bottom: 3%;
+  display: inline-block;
+}
+
+input[type=text], #data_storage_form > select {
+  border: 1px solid var(--input_border_colour);
+  border-radius: 4px;
+  resize: vertical;
+  width: 60%;
+  float: right;
+  margin-right: 5%;
+}
+
+.pop-up {
+  position: fixed;
+  z-index: 99;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background-color: var(--main_background_colour);
+  border: 1px solid var(--main_border_colour);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.pop-up > p, #data_storage_form > p {
+  text-align: left;
+}
+
+/* Arrangement of the Page */
+
+.row {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 1%;
+}
+
+#left_mid {
+  flex: left;
+  display: flex;
+  width: 75%;
+}
+
+#left {
+  flex: left;
+  width: 32%;
+}
+
+#mid {
+  flex: right;
+  text-align: center;
+  width: 68%;
+}
+
+#right {
+  flex: right;
+  width: 30%;
+}
+
+/* Middle Of The Page */
+
+/* --- Map --- */
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+#map {
+  margin: 0 auto;
+  cursor: grab;
+}
+
+#map:active {
+  cursor: grabbing;
+}
+
+/* Left Side Of The Page */
+
+#left {
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* --- Pan Buttons --- */
+
+#pan_buttons {
+  height: 18vh;
+  margin-left: 25%;
+}
+
+#pan_buttons > button, #left_right_pan > button {
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+}
+
+#pan_buttons > button > img, #left_right_pan > button > img {
+  height: 6vh;
+  width: 6vh;
+}
+
+#up_pan, #down_pan {
+  margin-left: calc(6vh + 3%);
+}
+
+#left_right_pan {
+  display: flex;
+}
+
+#left_pan {
+  flex: left;
+  margin-right: calc(6vh + 3%);
+}
+
+#right_pan {
+  flex: right;
+}
+
+/* --- Zoom Buttons --- */
+
+#zoom_buttons {
+  margin-top: 20%;
+  margin-left: 27.5%;
+}
+
+#zoom_buttons > button {
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+}
+
+#zoom_buttons > button > img {
+  height: 6vh;
+}
+
+#zoom_in {
+  margin-right: 10%;
+}
+
+/* --- Reset Buttons --- */
+
+#reset_buttons {
+  margin-left: 5%;
+  margin-top: 20%;
+}
+
+#reset_buttons > button {
+  margin-bottom: 4%;
+}
+
+#reset_position {
+  margin-right: 8%;
+}
+
+
+/* --- Search Window --- */
+
+#search_window {
+  margin-right: 25%;
+  margin-top: -12.5%;
+  margin-left: -6.5%;
+  width: 30%;
+  height: 90%;
+  padding-left: 1.2%;
+  padding-right: 1.2%;
+  padding-bottom: 1%;
+}
+
+#divider {
+  width: 118%;
+  margin-left: -9.5%;
+  margin-right: 2.5%;
+}
+
+#similarity_label {
+  text-align: center;
+  margin-bottom: -3%;
+}
+
+#name_similarity {
+  width: 80%;
+  margin-top: -2%;
+  margin-bottom: 10%;
+}
+
+#select_form > label {
+  text-align: left;
+  width: 35%;
+}
+
+#tag_search, #amenity_search {
+  float: right;
+  width: 65%;
+  margin-bottom: 3%;
+}
+
+#result_increment {
+  text-align: center;
+}
+
+#left_arrow {
+  margin-right: 15%;
+}
+
+/* Right Side Of The Page */
+
+#right {
+  margin-left: 2%;
+}
+
+/* --- Node Information Window, Map Key Window --- */
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: left;
+}
+
+table, th, td {
+  border: 1px solid var(--main_border_colour);
+}
+
+#node_info, #map_key {
+  position: relative;
+  height: fit-content;
+  margin-left: -5%;
+  width: 100%;
+  margin-top: 2%;
+  padding-bottom: 1%;
+}
+
+#map_key > p {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+#table_container, #key_container {
+  height: 55vh;
+  width: 85%;
+  align-items: center;
+  margin-left: 7.5%;
+  margin-top: -1%;
+  margin-bottom: 2.5%;
+  overflow: scroll;
+  border: 1px solid var(--main_border_colour);
+}
+
+/* --- Map Element Symbols --- */
+
+.circle {
+  width: var(--paragraph_size);
+  height: var(--paragraph_size);
+  border-radius: 50%;
+  border: 1px solid var(--main_border_colour);
+}
+
+.line {
+  width: calc(var(--paragraph_size) * 2);
+  height: calc(var(--paragraph_size) / 2);
+  margin-left: calc(50% - var(--paragraph_size));
+}
+
+.square {
+  width: var(--paragraph_size);
+  height: var(--paragraph_size);
+}
+
+.circle, .square {
+  margin-left: calc(50% - (0.5 * var(--paragraph_size)));
+}
+
+/* Buttons at Bottom of Screen */
+
+.button_row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.button_container {
+  width: 33.3%;
+  text-align: center;
+}
+
+.button_container > button, #left_buttons > button {
+  font-size: var(--h2_size);
+  height: calc(1.5 * var(--h2_size));
+}
+
+.button_container > button > img {
+  height: var(--h2_size);
+}
+
+/* Storage Form */
+
+#data_storage_form {
+  position: fixed;
+  text-align: center;
+  background-color: var(--main_background_colour);
+  border: 1px solid var(--main_border_colour);
+  width: 55%;
+  height: 80%;
+  margin-top: 1%;
+  margin-bottom: 5%;
+  margin-left: 21.5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  overflow-y: scroll;
+}

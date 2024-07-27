@@ -1,0 +1,127 @@
+Map Colours
+-----------
+
+In order for the map to be easier to read, elements that represent
+different things should have different colours. For example: A river
+should be drawn differently to a footpath - as, otherwise, someone
+may perceive it as something they could walk upon, and use it in
+route-planning.
+
+I will store the colours for each feature of the map in a JSON object
+called "colour_scheme". I will store the colours as rgba hex values.
+
+	Nodes
+	-----
+
+Not sure what to do with nodes yet. I think I'll just make them
+purple by default, for now.
+
+	Ways
+	----
+
+Ways have many tags that can determine how they should be drawn.
+For example: The tag "waterway" indicates that the way is made
+out of water, and should be drawn blue. I will detail a number
+of these tags and their values below:
+
+- tag:highway, value =
+	- motorway = red
+	- trunk = red
+	- primary = red
+	- secondary = red
+	- tertiary = red
+	- unclassified = red
+
+	- residential = orange
+	- living_street = orange
+
+	- service = dark red
+	- busway = dark red
+
+	- pedestrian = light brown
+	- footway = light brown
+	- bridleway = light brown
+	- steps = light brown
+	- cycleway = light brown
+
+For other values, use grey. I have grouped values together
+because I would run out of obviously-different colours if
+I tried to give each one its own. I will store them in the
+colour scheme as so:
+
+	"busy car roads" = red
+	"residential roads" = orange
+	"restricted access roads" = dark red
+	"pedestrian roads" = light brown
+	"other" = grey
+
+There is also the matter of railways. I don't feel the need
+to differentiate between railways, so I shall make every way
+with the tag "railway" pink.
+
+Labels should be white with a black outline so that they are
+visible on all colours.
+
+OSM also has a different thickness for each type of highway, so
+that's an improvement to consider for another time.
+
+- tag:building = dark grey
+
+I don't feel the need to differentiate between buildings, so
+they'll be stored as:
+
+	"building" = dark grey
+
+- tag:landuse, value =
+	- aquaculture = dark blue
+
+	- allotments = dark green
+	- farmland = dark green
+	- vineyard = dark green
+
+	- recreation_ground = light green
+	- village_green = light green
+	- flowerbed = light green
+	- plant_nursery = light green
+	- grass = light green
+	- meadow = light green
+
+	- forest = medium green
+	- orchard = medium green
+
+	- cemetery = light grey
+
+- tag:natural, value =
+	- water = light blue
+	- bay = light blue
+	- strait = light blue
+
+	- grassland = light green
+	- shrubbery = light green
+	- tundra = light green
+
+	- heath = medium green
+	- scrub = medium green
+	- tree_row = medium green
+	- wood = medium green
+
+	- beach = yellow
+
+	- glacier = very light blue
+
+	- mud = dark brown
+	- wetland = dark brown
+
+- tag:waterway = light blue
+
+These shall be polygons with the given fill.
+I'll store these as:
+
+	"commercial water" = dark blue
+	"natural water" = light blue
+	"commercial vegetation" = dark green
+	"heavy vegetation" = medium green
+	"light vegetation" = light green
+	"sand" = yellow
+	"ice" = very light blue
+	"mud" = dark brown

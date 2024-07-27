@@ -1,0 +1,32 @@
+{
+    "default nodes" : "rgb(0,35,99)",
+    "building nodes" : "rgb(0,35,100)",
+    "amenity nodes" : "rgb(0,35,101)",
+    "car park nodes" : "rgb(0,133,175)",
+    "search results" : "rgb(0,255,255)",
+
+    "default way" : "rgb(187,187,187)",
+    "main roads" : "rgb(0,0,255)",
+    "residential roads" : "rgb(0,135,255)",
+    "restricted access roads" : "rgb(0,0,150)",
+    "pedestrian roads" : "rgb(0,180,255)",
+    "railways" : "rgb(0,170,60)",
+    "water" : "rgb(0,255,255)",
+    "natural barrier" : "rgb(0,50,0)",
+    "high barrier" : "rgb(0,0,150)",
+    "low barrier" : "rgb(0,90,200)",
+    "seating" : "rgb(0,135,135)",
+
+    "commercial water" : "rgb(0,43,214)",
+    "natural water" : "rgb(0,255,255)",
+    "commercial vegetation" : "rgb(0,110,12)",
+    "heavy vegetation" : "rgb(0,190,83)",
+    "light vegetation" : "rgb(0,210,152)",
+    "sand" : "rgb(0,255,150)",
+    "ice" : "rgb(0,255,220)",
+    "mud" : "rgb(0,44,0)",
+    "rock" : "rgb(0,125,135)",
+    "buildings" : "rgb(101,101,101)",
+    "burial grounds" : "rgb(190,190,190)",
+    "car parks" : "rgb(0,98,171)"
+}
