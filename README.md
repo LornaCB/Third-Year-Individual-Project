@@ -1,6 +1,6 @@
 # Full Unit Project - Offline HTML5 Map Application
 
-(Originally a private GitLab repository.)
+Originally a private GitLab repository. Uploading it here for archival purposes/future ego boosts when I look back at it and realise how much I've improved since. Note: I did not handle OSM Relations correctly in this project, and only realised a year after I had submitted it, so some map features will not load correctly.
 
 ## Installation Instructions
 
